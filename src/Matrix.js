@@ -13,15 +13,16 @@ export default class Matrix extends Component {
   }
 
   assignSelectedColor = (updatedColorHex) => {
+    console.log(updatedColorHex);
     this.setState({
       selectedColor: updatedColorHex
     })
   }
 
-  findNewColor = () => (this.state.selectedColor)
+  // findNewColor = () => (this.state.selectedColor)
 
   genRow = (vals) => (
-    vals.map(val => <Cell color={val} findNewColor={this.findNewColor} />)
+    vals.map(val => <Cell color={val} findNewColor={this.state.selectedColor} />)
   )
 
   genMatrix = () => (
@@ -32,7 +33,7 @@ export default class Matrix extends Component {
   render() {
     return (
       <div id="app">
-        <ColorSelector assignSelectedColor={this.assignSelectedColor} />
+        <ColorSelector assignSelectedColor={this.assignSelectedColor.bind(this)} />
         <div id="matrix">
           {this.genMatrix()}
         </div>

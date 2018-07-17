@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 
 export default class ColorSelector extends Component {
 
-  makeColorSwatches = () => (
-    ["#F00", "#F80", "#FF0", "#0F0", "#00F", "#508", "#90D", "#FFF", "#000"].map((str, idx) => {
-      let updateParent = () => {
-        this.props.assignSelectedColor(str) }
+  makeColorSwatches = () => {
+
+    return ["#F00", "#F80", "#FF0", "#0F0", "#00F", "#508", "#90D", "#FFF", "#000"].map((str, idx) => {
+      let updateParent = () => (this.props.assignSelectedColor(str))
 
       return <div key={idx} className="color-swatch" style={{backgroundColor: str}} onClick={updateParent}/>
     })
-  )
+  }
 
 /*  onClick = (updatedColorHex) => {
     this.props.assignSelectedColor(updatedColorHex)
@@ -28,6 +28,7 @@ export default class ColorSelector extends Component {
 
 
   render() {
+
     return (
       <div id="colorSelector">
         {this.makeColorSwatches()}
